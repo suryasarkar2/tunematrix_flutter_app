@@ -9,23 +9,13 @@ class Grid extends StatelessWidget {
   final int gridSize;
 
   const Grid({Key key, this.gridSize}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     final buttons = List.generate(
       gridSize,
       (columnIndex) => List.generate(
         gridSize,
-        (rowIndex) => GridButton(rowIndex, columnIndex, onTapDown: (details) {
-          Provider.of<GridState>(context)
-                  .isButtonSelected(columnIndex, rowIndex)
-              ? Provider.of<GridState>(context)
-                  .removeButton(columnIndex, rowIndex)
-              : Provider.of<GridState>(context)
-                  .addButton(columnIndex, rowIndex);
-        }, onPanUpdate: (details) {
-          Provider.of<GridState>(context).addButton(columnIndex, rowIndex);
-        }),
+        (rowIndex) => GridButton(rowIndex, columnIndex),
       ),
     );
 
@@ -43,14 +33,36 @@ class Grid extends StatelessWidget {
           .toList(),
     );
 
-    return Container(
-      width: GridSize.width,
-      height: GridSize.height,
-      decoration: BoxDecoration(
-          color: Colors.black,
-          borderRadius: BorderRadius.circular(5.0),
-          border: Border.all(width: 2.0, color: Colors.pink)),
-      child: buttonGrid,
+    return GestureDetector(
+      onTapDown: (details) {
+        int column =
+            (details.localPosition.dx / GridSize.divisionWidth).floor();
+        int row = (details.localPosition.dy / GridSize.divisionHeight).floor();
+
+        Provider.of<GridState>(context).isButtonSelected(column, row)
+            ? Provider.of<GridState>(context).removeButton(column, row)
+            : Provider.of<GridState>(context).addButton(column, row);
+
+        print(details.localPosition);
+      },
+      onPanUpdate: (details) {
+        int column =
+            (details.localPosition.dx / GridSize.divisionWidth).floor();
+        int row = (details.localPosition.dy / GridSize.divisionHeight).floor();
+
+        Provider.of<GridState>(context).addButton(column, row);
+
+        print(details.localPosition);
+      },
+      child: Container(
+        width: GridSize.width,
+        height: GridSize.height,
+        decoration: BoxDecoration(
+            color: Colors.grey[200],
+            borderRadius: BorderRadius.circular(5.0),
+            border: Border.all(width: 2.0, color: Color(0xFF3e3e3e))),
+        child: buttonGrid,
+      ),
     );
   }
 }
