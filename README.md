@@ -3,8 +3,9 @@
 A music grid instrument inspired by Tone matrix, a pentatonic step sequenzer which produces relaxing sonal patterns.
 
 # Screenshots
-![alt_text](Screenshot_20200509-225814275.jpg)
-
+<p float="center">
+  <img src="Screenshot_20200509-225814275.jpg" width="300" />
+</p>
 
 # Links
 
