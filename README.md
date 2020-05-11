@@ -1,6 +1,7 @@
 # Tunematrix
 
 A music grid instrument inspired by Tone matrix, a pentatonic step sequenzer which produces relaxing sonal patterns.
+### This is a beautiful looking app with smooth and beautiful animations.
 
 # Screenshots
 <p float="center">
