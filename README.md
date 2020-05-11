@@ -8,6 +8,10 @@ A music grid instrument inspired by Tone matrix, a pentatonic step sequenzer whi
   <img src="Screenshot_20200509-225814275.jpg" width="300" />
 </p>
 
-# Links
+# Get Started
+1) Clone the repository.
+2) Run "flutter pub get"
+3) Run "flutter run"
 
+## Links
 - [Tonematrix:](https://tonematrix.audiotool.com/) Amazing flash app that allows you create beautiful melodies.
